@@ -101,5 +101,13 @@ const companyData = [
   { id: '099', ticker: 'FB', company: 'Facebook' },
   { id: '100', ticker: 'CGC', company: 'Canopy Growth' },
 ];
+var companyNames = function() {
+  let results = [];
+  for (let i = 0; i < companyData.length; i++) {
+    let currentCompany = companyData[i].company;
+    results.push(currentCompany);
+  }
+  return results;
+}
 
-module.exports = companyData;
+module.exports = { companyNames };
