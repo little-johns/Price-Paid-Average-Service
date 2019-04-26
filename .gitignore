@@ -1,1 +1,5 @@
 grunt-aws.json
+public/dist/*
+!public/dist/bundle.js
+node_modules
+.DS_Store
