@@ -68,7 +68,7 @@ var tickerMaker = function () {
 // }
 // // dataGenerator()
 
-const writeStream = fs.createWriteStream('data/data.csv');
+const writeStream = fs.createWriteStream('data/data6.csv');
 
 function writeFiveMillionTimes(writer, encoding, callback) {
   // let i = 500000;
@@ -87,14 +87,15 @@ function writeFiveMillionTimes(writer, encoding, callback) {
         range *= Math.floor(Math.random() * 2) === 1 ? 0.05 : -0.047;
         price *= (1 + range / 100);
         price = price.toFixed(2);
-        var newEntry = {
-          company: companyName,
-          price: Number(price),
-          day,
-          id: i,
-          ticker: tickers[i - 1],
-        }
-        ok = writer.write(JSON.stringify(newEntry) + "\n", encoding);
+        var entry = `${i}|${tickers[i - 1]}|${companyName}|${day}|${Number(price)}`
+        // var newEntry = {
+        //   company: companyName,
+        //   price: Number(price),
+        //   day,
+        //   id: i,
+        //   ticker: tickers[i - 1],
+        // }
+        ok = writer.write(entry + "\n", encoding);
         day += 1
       } while (ok && day < 64);
       if (day === 64) {
@@ -109,14 +110,17 @@ function writeFiveMillionTimes(writer, encoding, callback) {
       // write some more once it drains
       writer.once('drain', ()=>{write(price, day, companyName, i)});
     }
+    if (i === 0) {
+      writer.end();
+    }
   }
-  var dataGenerator = function () {
+  var dataGenerator = function (num) {
     let day = 1;
-    let records = 50000;
+    let records = num;
 
     write(null, day, null, records);
   }
-  dataGenerator();
+  dataGenerator(100);
 }  
 writeFiveMillionTimes(writeStream, 'utf8', () => console.log('complete'))
 
