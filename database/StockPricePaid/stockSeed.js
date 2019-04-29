@@ -120,7 +120,7 @@ function writeFiveMillionTimes(writer, encoding, callback) {
 
     write(null, day, null, records);
   }
-  dataGenerator(100);
+  dataGenerator(5000000);
 }  
 writeFiveMillionTimes(writeStream, 'utf8', () => console.log('complete'))
 
