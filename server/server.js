@@ -7,7 +7,7 @@ const path = require('path');
 // const sequalize = require('../database/StockPricePaid/sequalizeHelpers.js')
 const pool = require('../queries.js').pool;
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3004;
 const db = require('../database/index.js');
 const getStockById = require('./controller/querys.js').getStockById;
 app.use(express.static(`${__dirname}/../public/`));
