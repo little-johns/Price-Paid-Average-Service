@@ -5,3 +5,5 @@ node_modules
 .DS_Store
 newrelic.js
 hello.yml
+.env
+newrelic_agent.log

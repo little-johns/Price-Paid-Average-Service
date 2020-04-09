@@ -105,7 +105,9 @@ var companyNames = function() {
   let results = [];
   for (let i = 0; i < companyData.length; i++) {
     let currentCompany = companyData[i].company;
-    results.push(currentCompany);
+    if (currentCompany.length > 11) {
+      results.push(currentCompany.slice(0,10));
+    }
   }
   return results;
 }

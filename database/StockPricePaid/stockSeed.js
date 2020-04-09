@@ -68,7 +68,7 @@ var tickerMaker = function () {
 // }
 // // dataGenerator()
 
-const writeStream = fs.createWriteStream('data/data6.csv');
+const writeStream = fs.createWriteStream('data/data3.csv');
 
 function writeFiveMillionTimes(writer, encoding, callback) {
   // let i = 500000;
@@ -87,7 +87,7 @@ function writeFiveMillionTimes(writer, encoding, callback) {
         range *= Math.floor(Math.random() * 2) === 1 ? 0.05 : -0.047;
         price *= (1 + range / 100);
         price = price.toFixed(2);
-        var entry = `${i}|${tickers[i - 1]}|${companyName}|${day}|${Number(price)}`
+        var entry = `${i}|${tickers[i - 1]}|${day}|${Number(price)}`
         // var newEntry = {
         //   company: companyName,
         //   price: Number(price),
